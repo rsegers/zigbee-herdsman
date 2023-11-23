@@ -457,7 +457,7 @@ class EZSPAdapter extends Adapter {
         }
 
         const frame = this.driver.makeApsFrame(zclFrame.Cluster.ID, disableResponse || zclFrame.Header.frameControl.disableDefaultResponse);
-        frame.profileId = 0x0104;
+        frame.profileId = sourceEndpoint === 242 && endpoint === 242 ? 0xA1E0 : 0x0104;
         frame.sourceEndpoint = sourceEndpoint || 0x01;
         frame.destinationEndpoint = endpoint;
         frame.groupId = 0;
